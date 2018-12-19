@@ -3,11 +3,12 @@
 var express = require('express');
 
 var UserController = require('../controllers/users.controller');
-// var authorizationToken = require('../token/aut.js')
+var auth = require('../middlewares/auth')
 
-var api = express.Router();
+var userRoute = express.Router();
 
-api.post("/users/register", UserController.UserRegister);
-api.post("/users/login", UserController.UserLogin);
+userRoute.post("/users/register", UserController.UserRegister);
+userRoute.post("/users/login", UserController.UserLogin);
+userRoute.get("/users/auth", auth, UserController.UserAuth);
 
-module.exports = api;
+module.exports = userRoute;

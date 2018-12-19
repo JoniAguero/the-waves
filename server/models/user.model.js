@@ -60,6 +60,16 @@ userSchema.methods.generateToken = function(callback) {
     })
 }
 
+userSchema.statics.findByToken = function (token, callback) {
+    const user = this;
+    jwt.verify(token, process.env.SECRETPASS, function(err, decode){
+        user.findOne({"_id":decode, "token":token}, function(err, user){
+            if(err) return callback(err);
+            callback(null, user);
+        })
+    })
+}
+
 userSchema.pre('save', function(next){
     const user = this;
     if(user.isModified('password')) {
