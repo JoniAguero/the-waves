@@ -7,6 +7,6 @@ var UserController = require('../controllers/users.controller');
 
 var api = express.Router();
 
-api.get("/prueba", UserController.pruebaUsuario);
+api.post("/users/register", UserController.UserRegister);
 
 module.exports = api;

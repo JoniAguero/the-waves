@@ -1,14 +1,18 @@
 "use strict"
 
-var Usuario = require('../models/user.model');
+const { User } = require('../models/user.model');
 
-
-function pruebaUsuario(req, res) {
-    res.status(200).send({
-        message: 'Probando Controlador'
-    });
+const UserRegister = (req, res) => {
+    const user = new User(req.body);
+    user.save((err, doc) => {
+        if(err) return res.json({success:false, err});
+        res.status(200).json({
+            success: true,
+            userdata: doc
+        })
+    })
 }
 
 module.exports = {
-    pruebaUsuario
+    UserRegister
 }

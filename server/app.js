@@ -1,3 +1,5 @@
+const debug = require('debug')('back-end')
+const logger = require('morgan')
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -13,6 +15,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.DATABASE)
 
 const app = express();
+app.use(logger('dev'))
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
