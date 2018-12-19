@@ -26,6 +26,6 @@ The Waves [Udemy Course]
 
     1. Clone/Download repositoy
     2. cd project
-    3. npm install
-    4. http://localhost:3000
-    5. You will need to register with an email to access Admin Panel (it can be fake)
+    3. npm install Client & Server
+    4. Server: http://localhost:1234
+    5. Client: http://localhost:3000
