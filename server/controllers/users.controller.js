@@ -27,6 +27,19 @@ const UserLogin = (req, res) => {
     })
 }
 
+const UserLogout = (req, res) => {
+    User.findOneAndUpdate(
+        {_id: req.user._id},
+        {token: ''},
+        (err, doc) => {
+            if(err) return res.json({success: false, err});
+            return res.status(200).send({
+                success: true
+            })
+        }
+    )
+}
+
 const UserAuth = (req, res) => {
     res.status(200).json({
         isAdmin: req.user.role === 0 ? false : true,
@@ -43,5 +56,6 @@ const UserAuth = (req, res) => {
 module.exports = {
     UserRegister,
     UserLogin,
+    UserLogout,
     UserAuth
 }
