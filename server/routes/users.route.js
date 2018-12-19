@@ -8,5 +8,6 @@ var UserController = require('../controllers/users.controller');
 var api = express.Router();
 
 api.post("/users/register", UserController.UserRegister);
+api.post("/users/login", UserController.UserLogin);
 
 module.exports = api;

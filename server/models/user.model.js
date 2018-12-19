@@ -1,4 +1,8 @@
 const moongose = require('mongoose');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+const SALT_I = 10;
+require('dotenv').config()
 
 const userSchema = moongose.Schema({
     email: {
@@ -36,6 +40,39 @@ const userSchema = moongose.Schema({
     },
     token: {
         type: String
+    }
+})
+
+userSchema.methods.comparePassword = function(cpassword, callback){
+    bcrypt.compare(cpassword, this.password, function(err, isMatch){
+        if(err) return callback(err);
+        callback(null, isMatch)
+    })
+}
+
+userSchema.methods.generateToken = function(callback) {
+    const user = this;
+    const token = jwt.sign(user._id.toHexString(), process.env.SECRETPASS)
+    user.token = token;
+    user.save(function(err, user){
+        if(err) return callback(err);
+        callback(null, user)
+    })
+}
+
+userSchema.pre('save', function(next){
+    const user = this;
+    if(user.isModified('password')) {
+        bcrypt.genSalt(SALT_I, function(err, salt){
+            if(err) return next(err);
+            bcrypt.hash(user.password, salt, function(err, hash){
+                if(err) return next(err);
+                user.password = hash;
+                next();
+            })
+        })
+    } else {
+        next();
     }
 })
 
