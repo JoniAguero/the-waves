@@ -54,7 +54,6 @@ userSchema.methods.generateToken = function(callback) {
     const user = this;
     const token = jwt.sign(user._id.toHexString(), process.env.SECRETPASS)
     user.token = token;
-    console.log('UserModel', user);
     
     user.save(function(err, user){
         if(err) return callback(err);

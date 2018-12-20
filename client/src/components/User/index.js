@@ -3,8 +3,6 @@ import UserLayout from '../../Hoc/UserLayout';
 import MyButton from '../utils/button';
 
 const UserDashboard = () => {
-    console.log('UserDashboard');
-    
     return (
         <UserLayout>
             <div>

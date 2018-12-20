@@ -23,9 +23,7 @@ export function loginUser(dataToSubmit){
     const request = axios.post(`${USER_SERVER}/login`, dataToSubmit, {
         withCredentials: true
     })
-                .then(response => {
-                    console.log(response);
-                    
+                .then(response => {          
                     return response.data
                 });
       

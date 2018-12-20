@@ -13,18 +13,13 @@ const UserRegister = (req, res) => {
 }
 
 const UserLogin = (req, res) => {
-    console.log('UserLogin');
-    console.log(req.body);
     
     User.findOne({'email': req.body.email}, (err, user) => {
         if(!user) return res.json({success:false, message: 'Auth failed. Email not found.'});
         user.comparePassword(req.body.password, (err, isMatch)=>{
-            console.log('isMatch');
             if(!isMatch) return res.json({success:false, message: 'Wrong password'});
             user.generateToken((err, user)=>{
                 if(err) return res.status(400).send(err);
-                console.log('generateToken');
-                console.log(user.token);
                 
                 res.cookie('w_auth', user.token).status(200).json({
                     success: true
@@ -48,7 +43,7 @@ const UserLogout = (req, res) => {
 }
 
 const UserAuth = (req, res) => {
-    console.log('UserAuth', res);
+
     res.status(200).json({
         isAdmin: req.user.role === 0 ? false : true,
         isAuth: true,

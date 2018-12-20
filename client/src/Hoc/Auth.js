@@ -5,8 +5,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function(ComposedClass, reload, adminRoute = null){
 
-    console.log('AuthenticationCheck');
-
     class AuthenticationCheck extends Component {
 
 
@@ -18,8 +16,6 @@ export default function(ComposedClass, reload, adminRoute = null){
             this.props.dispatch(auth()).then(response =>{
                 
                 let user = response.payload;
-
-                console.log('componentDidMount', user);
                 
 
                 if(!user.isAuth){
