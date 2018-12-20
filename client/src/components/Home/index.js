@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react';
+import HomeSlider from './home_slider';
+import HomePromotion from './home_promotion'
 
-const Home = () => {
-  return (
-    <div>
-      home
-    </div>
-  )
+class Home extends Component {
+    render() {
+        return (
+            <div>
+                <HomeSlider/>
+                <HomePromotion/>
+            </div>
+        );
+    }
 }
 
-export default Home
+export default Home;
