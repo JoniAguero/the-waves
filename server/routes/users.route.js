@@ -1,15 +1,19 @@
 "use strict"
 
-var express = require('express');
+const express = require('express');
 
-var UserController = require('../controllers/users.controller');
-var auth = require('../middlewares/auth')
+const UserController = require('../controllers/users.controller');
+const auth = require('../middlewares/auth');
+const admin = require('../middlewares/admin');
+const formidable = require('express-formidable');
 
-var userRoute = express.Router();
+const userRoute = express.Router();
 
 userRoute.post("/users/register", UserController.UserRegister);
 userRoute.post("/users/login", UserController.UserLogin);
+userRoute.post("/users/uploadimage", [auth, admin, formidable()], UserController.UploadImage);
 userRoute.get("/users/auth", auth, UserController.UserAuth);
 userRoute.get("/users/logout", auth, UserController.UserLogout);
+userRoute.get("/users/removeimage", auth, UserController.RemoveImage);
 
 module.exports = userRoute;

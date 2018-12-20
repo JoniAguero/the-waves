@@ -1,5 +1,6 @@
 "use strict"
 const { User } = require('../models/user.model');
+const cloudinary = require('cloudinary');
 
 const UserRegister = (req, res) => {
     const user = new User(req.body);
@@ -56,9 +57,35 @@ const UserAuth = (req, res) => {
     })
 }
 
+const UploadImage = (req, res) => {
+    console.log(req.files);
+    
+    cloudinary.uploader.upload(req.files.file.path,(result)=>{
+        console.log(result);
+        res.status(200).send({
+            public_id: result.public_id,
+            url: result.url
+        })
+    },{
+        public_id: `${Date.now()}`,
+        resource_type: 'auto'
+    })
+}
+
+const RemoveImage = (req, res) => {
+    let image_id = req.query.public_id;
+
+    cloudinary.uploader.destroy(image_id,(error,result)=>{
+        if(error) return res.json({succes:false,error});
+        res.status(200).send('ok');
+    })
+}
+
 module.exports = {
     UserRegister,
     UserLogin,
     UserLogout,
-    UserAuth
+    UserAuth,
+    UploadImage,
+    RemoveImage
 }

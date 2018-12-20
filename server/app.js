@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
+const formidable = require('express-formidable');
+const cloudinary = require('cloudinary');
+
 const userRoute = require('./routes/users.route');
 const brandRoute = require('./routes/brands.route');
 const woodRoute = require('./routes/woods.route');
@@ -24,6 +27,12 @@ app.use(logger('dev'))
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET
+})
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
