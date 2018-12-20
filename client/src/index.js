@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './assets/css/styles.css';
+import './Resources/css/styles.css';
 
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './Routes';
+import Routes from './routes';
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';

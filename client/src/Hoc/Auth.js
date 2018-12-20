@@ -3,10 +3,8 @@ import { connect } from 'react-redux';
 import { auth } from '../actions/user_actions';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-export default function(ComposedClass, reload, adminRoute = null){
-
+export default function(ComposedClass,reload,adminRoute = null){
     class AuthenticationCheck extends Component {
-
 
         state = {
             loading: true
@@ -14,15 +12,14 @@ export default function(ComposedClass, reload, adminRoute = null){
 
         componentDidMount(){
             this.props.dispatch(auth()).then(response =>{
-                
-                let user = response.payload;
-                
+                let user = this.props.user.userData;
+                console.log(user);
 
                 if(!user.isAuth){
                     if(reload){
                         this.props.history.push('/register_login')
                     }
-                } else {
+                } else{
                     if(adminRoute && !user.isAdmin){
                         this.props.history.push('/user/dashboard')
                     } else{
