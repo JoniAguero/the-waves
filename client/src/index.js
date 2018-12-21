@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './Resources/css/styles.css';
 
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './routes';
+import Routes from 'routes.js';
 
-import "./setupProxy";
+import "setupProxy.js";
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
