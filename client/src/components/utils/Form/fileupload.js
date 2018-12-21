@@ -26,8 +26,6 @@ class Fileupload extends Component {
        axios.post('/api/users/uploadimage',formData,config)
        .then(response => {
 
-            console.log(response.data)
-
             this.setState({
                 uploading:false,
                 uploadedFiles:[

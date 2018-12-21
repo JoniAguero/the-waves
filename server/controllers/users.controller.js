@@ -1,6 +1,7 @@
 "use strict"
 const { User } = require('../models/user.model');
 const cloudinary = require('cloudinary');
+const mongoose = require('mongoose');
 
 const UserRegister = (req, res) => {
     const user = new User(req.body);
@@ -58,10 +59,9 @@ const UserAuth = (req, res) => {
 }
 
 const UploadImage = (req, res) => {
-    console.log(req.files);
     
     cloudinary.uploader.upload(req.files.file.path,(result)=>{
-        console.log(result);
+
         res.status(200).send({
             public_id: result.public_id,
             url: result.url
@@ -108,16 +108,15 @@ const removeFromCart = (req, res) => {
 }
 
 const addToCart = (req, res) => {
+
     User.findOne({_id: req.user._id},(err,doc)=>{
         let duplicate = false;
-
         doc.cart.forEach((item)=>{
             if(item.id == req.query.productId){
                   duplicate = true;  
             }
         })
-
-        if(duplicate){
+        if(duplicate){    
             User.findOneAndUpdate(
                 {_id: req.user._id, "cart.id":mongoose.Types.ObjectId(req.query.productId)},
                 { $inc: { "cart.$.quantity":1 } },
