@@ -104,9 +104,6 @@ class UserCart extends Component {
                 <div>
                     <h1>My cart</h1>
                     <div className="user_cart">
-                        {
-                            console.log(this.props.user)
-                        }
                         <UserProductBlock
                             products={this.props.user}
                             type="cart"
