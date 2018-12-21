@@ -2,8 +2,6 @@
 const { Site } = require('../models/site.model');
 
 const UpdateSite = (req, res) => {
-    console.log(req.body);
-    
     Site.findOneAndUpdate(
         { name: 'Site'},
         { "$set": { siteInfo: req.body }},
@@ -21,8 +19,7 @@ const UpdateSite = (req, res) => {
 const GetSite = (req, res) => {
 
     Site.find({}, (err, site) => {
-        console.log(site);
-        
+
         if (err) return res.status(400).send(err);
         res.status(200).send(site[0].siteInfo)
     });
