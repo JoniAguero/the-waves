@@ -1,22 +1,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Layout from './hoc/layout';
-import Auth from './hoc/auth';
+import Layout from '../hoc/layout';
+import Auth from '../hoc/auth';
 
-import Home from './components/Home';
-import RegisterLogin from './components/Register_login';
-import Register from './components/Register_login/register';
-import Shop from './components/Shop';
-import ProductPage from './components/Product';
+import Home from '../components/Home';
+import RegisterLogin from '../components/Register_login';
+import Register from '../components/Register_login/register';
+import Shop from '../components/Shop';
+import ProductPage from '../components/Product';
 
-import UserDashboard from './components/User';
-import AddProduct from './components/User/Admin/add_product';
-import ManageCategories from './components/User/Admin/manage_categories';
-import UserCart from './components/User/cart';
-import UpdateProfile from './components/User/update_profile';
-import ManageSite from './components/User/Admin/manage_site';
-import AddFile from './components/User/Admin/add_file';
+import UserDashboard from '../components/User';
+import AddProduct from '../components/User/Admin/add_product';
+import ManageCategories from '../components/User/Admin/manage_categories';
+import UserCart from '../components/User/cart';
+import UpdateProfile from '../components/User/update_profile';
+import ManageSite from '../components/User/Admin/manage_site';
+import AddFile from '../components/User/Admin/add_file';
 
 const Routes = () => {
   return(
