@@ -12,8 +12,10 @@ const userRoute = express.Router();
 userRoute.post("/users/register", UserController.UserRegister);
 userRoute.post("/users/login", UserController.UserLogin);
 userRoute.post("/users/uploadimage", [auth, admin, formidable()], UserController.UploadImage);
+userRoute.post("/users/addToCart", auth, UserController.addToCart);
 userRoute.get("/users/auth", auth, UserController.UserAuth);
 userRoute.get("/users/logout", auth, UserController.UserLogout);
 userRoute.get("/users/removeimage", auth, UserController.RemoveImage);
+userRoute.get("/users/removeFromCart", auth, UserController.removeFromCart);
 
 module.exports = userRoute;
