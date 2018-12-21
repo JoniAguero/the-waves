@@ -14,6 +14,7 @@ userRoute.post("/users/login", UserController.UserLogin);
 userRoute.post("/users/uploadimage", [auth, admin, formidable()], UserController.UploadImage);
 userRoute.post("/users/addToCart", auth, UserController.addToCart);
 userRoute.post("/users/successBuy", auth, UserController.successBuy);
+userRoute.post("/users/update_profile", auth, UserController.updateProfile);
 userRoute.get("/users/auth", auth, UserController.UserAuth);
 userRoute.get("/users/logout", auth, UserController.UserLogout);
 userRoute.get("/users/removeimage", auth, UserController.RemoveImage);

@@ -214,6 +214,22 @@ const successBuy = (req, res) => {
     )
 }
 
+const updateProfile = (req, res) => {
+    User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+            "$set": req.body
+        },
+        { new: true },
+        (err,doc)=>{
+            if(err) return res.json({success:false,err});
+            return res.status(200).send({
+                success:true
+            })
+        }
+    );
+}
+
 module.exports = {
     UserRegister,
     UserLogin,
@@ -223,5 +239,6 @@ module.exports = {
     RemoveImage,
     addToCart,
     removeFromCart,
-    successBuy
+    successBuy,
+    updateProfile
 }
