@@ -1,22 +1,22 @@
 node_modules/*
-server/client/node_modules/*
+client/node_modules/*
 # dependencies
-server/client/.pnp
-server/client/.pnp.js
+client/.pnp
+client/.pnp.js
 
 # testing
-server/client/coverage
+client/coverage
 
 # production
-server/client/build
+client/build
 
 # misc
 
-server/client/.env.local
-server/client/.env.development.local
-server/client/.env.test.local
-server/client/.env.production.local
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
 
-server/client/npm-debug.log*
-server/client/yarn-debug.log*
-server/client/yarn-error.log*
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
