@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserLayout from '../../hoc/user';
+import UserLayout from '../../Hoc/user';
 import UserProductBlock from '../utils/User/product_block';
 
 import { connect } from 'react-redux';

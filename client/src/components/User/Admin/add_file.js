@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserLayout from '../../../hoc/user';
+import UserLayout from '../../../Hoc/user';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { Link } from 'react-router-dom';

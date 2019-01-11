@@ -1,5 +1,5 @@
 import React from 'react';
-import UserLayout from '../../hoc/user';
+import UserLayout from '../../Hoc/user';
 import MyButton from '../utils/button';
 import UserHistoryBlock from '../utils/User/history_block';
 

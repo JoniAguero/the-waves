@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserLayout from '../../../hoc/user';
+import UserLayout from '../../../Hoc/user';
 
 import FormField from '../../utils/Form/formfield';
 import { update, generateData, isFormValid, populateOptionFields,resetFields} from '../../utils/Form/formActions';
